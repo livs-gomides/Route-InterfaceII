@@ -1,24 +1,30 @@
-﻿namespace Route2
+﻿
+namespace Route2;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    private bool _transitionStarted;
+
+    public MainPage()
     {
-        int count = 0;
+        InitializeComponent();
+    }
 
-        public MainPage()
-        {
-            InitializeComponent();
-        }
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
 
-        private void OnCounterClicked(object? sender, EventArgs e)
-        {
-            count++;
+        if (_transitionStarted)
+            return;
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+        _transitionStarted = true;
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
-        }
+        await Task.Delay(2000);
+
+        await this.FadeTo(0, 450);
+
+        await Shell.Current.GoToAsync(
+            nameof(StartPage),
+            animate: false);
     }
 }

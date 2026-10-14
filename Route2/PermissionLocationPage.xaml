@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Route2.PermissionLocationPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#050B14"
+    Shell.NavBarIsVisible="False">
+
+    <Grid Padding="24">
+
+        <Border
+            WidthRequest="300"
+            HeightRequest="330"
+            Padding="24"
+            BackgroundColor="#454545"
+            StrokeThickness="0"
+            StrokeShape="RoundRectangle 18"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+
+            <VerticalStackLayout
+                Spacing="14"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+
+                <!-- Ícone de localização -->
+                <Image
+                    Source="locationicon.png"
+                    HeightRequest="42"
+                    WidthRequest="42"
+                    HorizontalOptions="Center"
+                    Aspect="AspectFit"/>
+
+                <!-- Texto da permissão -->
+                <Label
+                    Text="Permitir que o&#10;Route acesse sua&#10;localização?"
+                    TextColor="White"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    LineHeight="1.05"
+                    WidthRequest="190"/>
+
+                <!-- Botão Permitir -->
+                <Button
+                    Text="Permitir"
+                    BackgroundColor="#FFC800"
+                    Clicked="OnAllowClicked"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    CornerRadius="7"
+                    HeightRequest="55"
+                    WidthRequest="190"
+                    FontSize="18"/>
+
+                <!-- Botão Negar -->
+                <Button
+                    Text="Negar"
+                    BackgroundColor="Black"
+                    Clicked="OnDenyClicked"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="7"
+                    HeightRequest="55"
+                    WidthRequest="190"
+                    FontSize="18"
+                    />
+
+            </VerticalStackLayout>
+
+        </Border>
+
+    </Grid>
+
+</ContentPage>

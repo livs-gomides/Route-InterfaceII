@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Route2.StartPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#050B14"
+    Shell.NavBarIsVisible="False">
+
+    <Grid Padding="24,40,24,36"
+          RowDefinitions="*,Auto">
+
+        <!-- Círculo central -->
+        <Border
+            Grid.Row="0"
+            WidthRequest="250"
+            HeightRequest="250"
+            Stroke="#FFD000"
+            StrokeThickness="2"
+            BackgroundColor="#160D00"
+            StrokeShape="Ellipse"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+
+            <Border.Shadow>
+                <Shadow
+                    Brush="#FFFFB000"
+                    Offset="0,0"
+                    Radius="18"
+                    Opacity="0.95" />
+            </Border.Shadow>
+
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer
+                    Tapped="OnStartTapped" />
+            </Border.GestureRecognizers>
+
+            <Grid>
+                <Label
+                    Text="COMEÇAR"
+                    FontSize="28"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    HorizontalTextAlignment="Center" />
+            </Grid>
+        </Border>
+
+        <!-- Logotipo na parte inferior -->
+        <Image
+            Grid.Row="1"
+            Source="routelogo.png"
+            WidthRequest="150"
+            HeightRequest="65"
+            Aspect="AspectFit"
+            HorizontalOptions="Center"
+            VerticalOptions="End" />
+
+    </Grid>
+</ContentPage>

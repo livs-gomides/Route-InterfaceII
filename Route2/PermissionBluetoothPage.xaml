@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Route2.PermissionBluetoothPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="#050B14"
+    Shell.NavBarIsVisible="False">
+
+    <Grid Padding="24">
+
+        <Border
+            WidthRequest="300"
+            HeightRequest="330"
+            Padding="24"
+            BackgroundColor="#454545"
+            StrokeThickness="0"
+            StrokeShape="RoundRectangle 18"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+
+            <VerticalStackLayout
+                Spacing="14"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+
+                <Image
+                    Source="bluetoothicon.png"
+                    HeightRequest="48"
+                    WidthRequest="48"
+                    HorizontalOptions="Center"
+                    Aspect="AspectFit"/>
+
+                <Label
+                    Text="Permitir que o Route&#10;acesse seu Bluetooth?"
+                    TextColor="White"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    WidthRequest="230"/>
+
+                <Button
+                    Text="Permitir"
+                    BackgroundColor="#FFC800"
+                    TextColor="Black"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    CornerRadius="7"
+                    HeightRequest="55"
+                    WidthRequest="190"
+                    Clicked="OnAllowClicked"/>
+
+                <Button
+                    Text="Negar"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    CornerRadius="7"
+                    HeightRequest="55"
+                    WidthRequest="190"
+                    Clicked="OnDenyClicked"/>
+
+            </VerticalStackLayout>
+
+        </Border>
+
+    </Grid>
+
+</ContentPage>
