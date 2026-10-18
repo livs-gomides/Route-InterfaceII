@@ -1,3 +1,6 @@
 <Solution>
-  <Project Path="Route2/Route2.csproj" />
+  <Project Path="Route2/Route2.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+  <Project Path="Route2/RouteAPI-SQL-Connect/RouteAPI-SQL-Connect.csproj" />
 </Solution>
