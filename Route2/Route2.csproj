@@ -76,31 +76,31 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="PermissionBluetoothPage.xaml.cs">
+	  <Compile Update="PagesApp\PermissionBluetoothPage.xaml.cs">
 	    <DependentUpon>PermissionBluetoothPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="PermissionMicrophonePage.xaml.cs">
+	  <Compile Update="PagesApp\PermissionMicrophonePage.xaml.cs">
 	    <DependentUpon>PermissionMicrophonePage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="PermissionLocationPage.xaml.cs">
+	  <Compile Update="PagesApp\PermissionLocationPage.xaml.cs">
 	    <DependentUpon>PermissionLocationPage.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="StartPage.xaml.cs">
+	  <Compile Update="PagesApp\StartPage.xaml.cs">
 	    <DependentUpon>StartPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="PermissionBluetoothPage.xaml">
+	  <MauiXaml Update="PagesApp\PermissionBluetoothPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="PermissionMicrophonePage.xaml">
+	  <MauiXaml Update="PagesApp\PermissionMicrophonePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="PermissionLocationPage.xaml">
+	  <MauiXaml Update="PagesApp\PermissionLocationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="StartPage.xaml">
+	  <MauiXaml Update="PagesApp\StartPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
