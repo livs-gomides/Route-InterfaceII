@@ -1,11 +1,5 @@
 ﻿using Microsoft.Maui.ApplicationModel;
-
-#if ANDROID
-using Android;
-using Android.OS;
-using Microsoft.Maui.ApplicationModel;
-#endif
-
+using Route2.PagesApp;
 namespace Route2;
 
 public partial class PermissionBluetoothPage : ContentPage
@@ -17,71 +11,52 @@ public partial class PermissionBluetoothPage : ContentPage
 
     private async void OnAllowClicked(object sender, EventArgs e)
     {
-        try
-        {
-#if ANDROID
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.S)
-            {
-                var status = await Permissions.CheckStatusAsync<BluetoothScanPermission>();
+        //try
+        //{
+            //var status = await Permissions.CheckStatusAsync<
+            //    Permissions.Bluetooth>();
 
-                if (status != PermissionStatus.Granted)
-                {
-                    status = await Permissions.RequestAsync<BluetoothScanPermission>();
-                }
+            //if (status != PermissionStatus.Granted)
+            //{
+            //    status = await Permissions.RequestAsync<
+            //        Permissions.Bluetooth>();
+            //}
 
-                if (status != PermissionStatus.Granted)
-                {
-                    await DisplayAlert(
-                        "Permissão necessária",
-                        "Para detectar os beacons de navegação, permita o acesso aos dispositivos Bluetooth.",
-                        "OK");
-
-                    return;
-                }
-            }
-#endif
-
-            // A etapa de Bluetooth foi concluída.
-            // Defina aqui a próxima tela, se houver.
-        }
-        catch (FeatureNotSupportedException)
-        {
-            await DisplayAlert(
-                "Indisponível",
-                "A solicitação de Bluetooth não é suportada nesta plataforma.",
-                "OK");
-        }
-        catch (PermissionException)
-        {
-            await DisplayAlert(
-                "Erro de permissão",
-                "Não foi possível solicitar a permissão Bluetooth.",
-                "OK");
-        }
-        catch (Exception)
-        {
-            await DisplayAlert(
-                "Erro",
-                "Ocorreu um problema ao solicitar a permissão Bluetooth.",
-                "OK");
-        }
+            //if (status == PermissionStatus.Granted)
+            //{
+                // Avança diretamente para a tela de permissão Bluetooth.
+                await Shell.Current.GoToAsync(
+                    nameof(SignUp));
+        //    }
+        //    else
+        //    {
+        //        await DisplayAlert(
+        //            "Permissão necessária",
+        //            "Para utilizar os comandos de voz do Route, permita o acesso ao microfone nas configurações do dispositivo.",
+        //            "OK");
+        //    }
+        //}
+        //catch (FeatureNotSupportedException)
+        //{
+        //    await DisplayAlert(
+        //        "Recurso indisponível",
+        //        "O acesso ao BLUETOOTH não é suportado nesta plataforma.",
+        //        "OK");
+        //}
+        //catch (PermissionException)
+        //{
+        //    await DisplayAlert(
+        //        "Erro de permissão",
+        //        "Não foi possível solicitar o acesso ao BLUETOOTH.",
+        //        "OK");
+        //}
+        //catch (Exception)
+        //{
+        //    await DisplayAlert(
+        //        "Erro",
+        //        "Ocorreu um problema ao solicitar o BLUETOOTH.",
+        //        "OK");
+        //}
     }
 
-    private async void OnDenyClicked(object sender, EventArgs e)
-    {
-        // Permanece na tela caso o usuário negue a permissão.
-    }
 }
-
-#if ANDROID
-public class BluetoothScanPermission : Permissions.BasePlatformPermission
-{
-    public override (string androidPermission, bool isRuntime)[] RequiredPermissions =>
-        Build.VERSION.SdkInt >= BuildVersionCodes.S
-            ? new[]
-            {
-                (Manifest.Permission.BluetoothScan, true)
-            }
-            : Array.Empty<(string, bool)>();
-}
-#endif

@@ -3,10 +3,65 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Route2.PagesApp.SignIn"
              Title="Sign-In">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid Padding="24">
+        <Border
+            WidthRequest="300"
+            HeightRequest="400"
+            Padding="24"
+            BackgroundColor="#454545"
+            StrokeThickness="0"
+            StrokeShape="RoundRectangle 18"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+
+            <VerticalStackLayout
+                Spacing="14"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+
+
+                <Label
+                    Text="Login"
+                    TextColor="White"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    WidthRequest="230"/>
+                
+                
+                <Label
+                    Text="Email"
+                    />
+                <Entry
+                    />
+                <Label
+                    Text="Senha"
+                    />
+                <Entry
+                    />
+                <Button
+                    Text="Realizar Login"
+                    BackgroundColor="#FFC800"
+                    TextColor="Black"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    CornerRadius="7"
+                    HeightRequest="55"
+                    WidthRequest="190"
+                    Clicked="OnAllowClicked"/>      
+
+                <Button
+                    Text="Esqueci a senha"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    FontSize="18"
+                    FontAttributes="Bold" 
+                    HeightRequest="55"
+                    WidthRequest="190"
+                    Clicked="ForgetPass"/>
+
+            </VerticalStackLayout>
+        </Border>
+    </Grid>
 </ContentPage>

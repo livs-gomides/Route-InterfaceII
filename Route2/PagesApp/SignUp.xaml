@@ -3,10 +3,58 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Route2.PagesApp.SignUp"
              Title="SignUp">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid Padding="24">
+        <Border
+            WidthRequest="300"
+            HeightRequest="500"
+            Padding="24"
+            BackgroundColor="#454545"
+            StrokeThickness="0"
+            StrokeShape="RoundRectangle 18"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+
+            <VerticalStackLayout
+                Spacing="14"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                
+                <Label
+                    Text="Cadastro"
+                    TextColor="White"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    WidthRequest="230"/>
+
+                <Label
+                    Text="Email"
+                    />
+                <Entry
+                    />
+                <Label
+                    Text="Senha"
+                    />
+                <Entry
+                    />
+                <Label
+                    Text="Confirmar senha"
+                    />
+                <Entry
+                    />
+
+                <Button
+                    Text="Permitir"
+                    BackgroundColor="Black"
+                    TextColor="White"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    CornerRadius="7"
+                    HeightRequest="55"
+                    WidthRequest="190"
+                    Clicked="OnAllowClicked"/>
+            </VerticalStackLayout>
+        </Border>
+    </Grid>
 </ContentPage>
