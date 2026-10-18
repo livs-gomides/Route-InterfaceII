@@ -8,7 +8,6 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-// ADICIONE A CONFIGURAÇÃO DO BANCO DE DADOS AQUI
 builder.Services.AddDbContext<RouteDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("RouteCloudDatabase")));
 
