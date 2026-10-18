@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net10.0-android</TargetFrameworks>
@@ -66,6 +66,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Include="RouteAPI-SQL-Connect\RouteAPI-SQL-Connect.csproj" />
+	  <None Include="RouteAPI-SQL-Connect\RouteAPI-SQL-Connect.csproj.user" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
 	</ItemGroup>
@@ -98,6 +103,13 @@
 	  <MauiXaml Update="StartPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="RouteAPI-SQL-Connect\bin\Release\net10.0\" />
+	  <Folder Include="RouteAPI-SQL-Connect\obj\Debug\net10.0\staticwebassets\" />
+	  <Folder Include="RouteAPI-SQL-Connect\obj\Release\net10.0\refint\" />
+	  <Folder Include="RouteAPI-SQL-Connect\obj\Release\net10.0\ref\" />
 	</ItemGroup>
 
 </Project>
