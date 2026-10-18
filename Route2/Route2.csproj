@@ -73,6 +73,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="PagesApp\SignIn.xaml.cs">
+	    <DependentUpon>SignIn.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="PagesApp\PermissionBluetoothPage.xaml.cs">
 	    <DependentUpon>PermissionBluetoothPage.xaml</DependentUpon>
 	  </Compile>
@@ -88,6 +91,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="PagesApp\ForgetPassword.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PagesApp\SignIn.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="PagesApp\PermissionBluetoothPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -95,6 +104,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PagesApp\PermissionLocationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PagesApp\SignUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PagesApp\StartPage.xaml">
