@@ -1,4 +1,6 @@
 ﻿
+using Route2.PagesApp;
+
 namespace Route2;
 
 public partial class AppShell : Shell
@@ -22,5 +24,17 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(
             nameof(PermissionBluetoothPage),
             typeof(PermissionBluetoothPage));
+
+        Routing.RegisterRoute(
+            nameof(SignUp),
+            typeof(SignUp));
+
+        Routing.RegisterRoute(
+            nameof(SignIn),
+            typeof(SignIn));
+
+        Routing.RegisterRoute(
+            nameof(ForgetPassword),
+            typeof(ForgetPassword));
     }
 }

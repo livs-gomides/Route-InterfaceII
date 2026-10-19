@@ -6,4 +6,14 @@ public partial class SignIn : ContentPage
 	{
 		InitializeComponent();
 	}
+    private async void ForgetPass(object sender, EventArgs e)
+    {
+                await Shell.Current.GoToAsync(
+                    nameof(ForgetPassword));  
+    }
+    private async void OnAllowClicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(
+                   nameof(StartPage));
+    }
 }

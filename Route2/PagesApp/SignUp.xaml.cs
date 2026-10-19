@@ -6,4 +6,11 @@ public partial class SignUp : ContentPage
 	{
 		InitializeComponent();
 	}
+    private async void OnAllowClicked(object sender, EventArgs e)
+    {
+                await Shell.Current.GoToAsync(
+                    nameof(SignIn));      
+    }
+
+    
 }
