@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Route2.PagesApp.SavedPlacesPage"
+    BackgroundColor="#050514"
+    Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*,Auto"
+          Padding="20">
+
+        <!-- CABEÇALHO -->
+        <Grid
+            Grid.Row="0"
+            ColumnDefinitions="Auto,*"
+            Margin="0,15,0,20">
+
+            <!-- Botão Voltar -->
+            <Label
+                Grid.Column="0"
+                Text="❮"
+                TextColor="#FFC800"
+                FontSize="30"
+                VerticalOptions="Center"
+                SemanticProperties.Description="Voltar">
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnBackTapped" />
+                </Label.GestureRecognizers>
+
+            </Label>
+
+            <!-- Título -->
+            <Label
+                Grid.Column="1"
+                Text="Locais Salvos"
+                TextColor="#FFC800"
+                FontSize="24"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"
+                VerticalOptions="Center" />
+
+        </Grid>
+
+        <!-- LISTA DE LOCAIS -->
+        <VerticalStackLayout
+            Grid.Row="1"
+            Spacing="12"
+            VerticalOptions="Center">
+
+            <Button
+                Text="Unicesumar"
+                BackgroundColor="#454545"
+                TextColor="White"
+                HeightRequest="55" />
+
+            <Button
+                Text="Shopping Palladium"
+                BackgroundColor="#454545"
+                TextColor="White"
+                HeightRequest="55" />
+
+            <Button
+                Text="UnioPet"
+                BackgroundColor="#454545"
+                TextColor="White"
+                HeightRequest="55" />
+
+            <Button
+                Text="Shopping Total"
+                BackgroundColor="#454545"
+                TextColor="White"
+                HeightRequest="55" />
+
+            <Button
+                Text="PUC - PR"
+                BackgroundColor="#454545"
+                TextColor="White"
+                HeightRequest="55" />
+
+            <Button
+                Text="CAAE"
+                BackgroundColor="#454545"
+                TextColor="White"
+                HeightRequest="55" />
+
+        </VerticalStackLayout>
+
+    </Grid>
+
+</ContentPage>

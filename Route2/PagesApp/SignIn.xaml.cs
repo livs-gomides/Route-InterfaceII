@@ -14,6 +14,6 @@ public partial class SignIn : ContentPage
     private async void OnAllowClicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync(
-                   nameof(StartPage));
+                   nameof(AssistantPage));
     }
 }
