@@ -1,52 +1,174 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Route2.PagesApp.SignIn"
-             Title="Sign-In">
-    <Grid Padding="24">
-        <Border
-            WidthRequest="300"
-            HeightRequest="400"
-            Padding="24"
-            BackgroundColor="#454545"
-            StrokeThickness="0"
-            StrokeShape="RoundRectangle 18"
-            HorizontalOptions="Center"
-            VerticalOptions="Center">
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Route2.PagesApp.SignIn"
+    Title="Sign-In"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#050A0D">
+
+    <Grid BackgroundColor="#050A0D"
+          Padding="24">
+
+        <ScrollView VerticalOptions="Fill"
+                    HorizontalOptions="Fill">
 
             <VerticalStackLayout
-                Spacing="14"
-                HorizontalOptions="Center"
-                VerticalOptions="Center">
+                Spacing="0"
+                Padding="0,24,0,24"
+                HorizontalOptions="Fill">
 
+                <Border
+                    WidthRequest="108"
+                    HeightRequest="108"
+                    Stroke="#FFD000"
+                    StrokeThickness="2"
+                    BackgroundColor="#101416"
+                    StrokeShape="RoundRectangle 54"
+                    HorizontalOptions="Center"
+                    Margin="0,0,0,22">
+
+                    <Grid>
+                        <Label
+                            Text="〰"
+                            TextColor="#FFD000"
+                            FontSize="62"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            Margin="0,-8,0,0"/>
+                    </Grid>
+                </Border>
 
                 <Label
                     Text="Login"
-                    TextColor="White"
-                    FontSize="18"
+                    TextColor="#FFFFFF"
+                    FontSize="32"
                     FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"/>
+
+                <Label
+                    Text="Entre para continuar"
+                    TextColor="#D5D8DA"
+                    FontSize="16"
                     HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Center"
-                    WidthRequest="230"/>
+                    Margin="0,8,0,36"/>
 
+                <Border
+                    BackgroundColor="#252C31"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 24"
+                    HeightRequest="68"
+                    Padding="16,0"
+                    Margin="0,0,0,16">
 
-                <Entry x:Name="EmailEntry" Placeholder="E-mail" Keyboard="Email" />
-                <Entry x:Name="PasswordEntry" Placeholder="Senha" IsPassword="True" />
+                    <Grid ColumnDefinitions="36,*"
+                          ColumnSpacing="12"
+                          VerticalOptions="Center">
 
-                <Button Text="Entrar" Clicked="OnLoginButtonClicked" />
-                  
+                        <Label
+                            Text="✉"
+                            TextColor="#FFD000"
+                            FontSize="25"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"/>
+
+                        <Entry
+                            x:Name="EmailEntry"
+                            Grid.Column="1"
+                            Placeholder="E-mail"
+                            PlaceholderColor="#B9C0C5"
+                            TextColor="#FFFFFF"
+                            FontSize="16"
+                            Keyboard="Email"
+                            BackgroundColor="Transparent"
+                            VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <Border
+                    BackgroundColor="#252C31"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 24"
+                    HeightRequest="68"
+                    Padding="16,0"
+                    Margin="0,0,0,8">
+
+                    <Grid ColumnDefinitions="36,*"
+                          ColumnSpacing="12"
+                          VerticalOptions="Center">
+
+                        <Label
+                            Text="♙"
+                            TextColor="#FFD000"
+                            FontSize="25"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"/>
+
+                        <Entry
+                            x:Name="PasswordEntry"
+                            Grid.Column="1"
+                            Placeholder="Senha"
+                            PlaceholderColor="#B9C0C5"
+                            TextColor="#FFFFFF"
+                            FontSize="16"
+                            IsPassword="True"
+                            BackgroundColor="Transparent"
+                            VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
 
                 <Button
-                    Text="Esqueci a senha"
-                    BackgroundColor="Black"
-                    TextColor="White"
-                    FontSize="18"
-                    FontAttributes="Bold" 
-                    HeightRequest="55"
-                    WidthRequest="190"
-                    Clicked="ForgetPass"/>
+                    Text="Esqueci a senha?"
+                    Clicked="ForgetPass"
+                    BackgroundColor="Transparent"
+                    TextColor="#FFD000"
+                    FontSize="14"
+                    FontAttributes="Bold"
+                    HorizontalOptions="End"
+                    HeightRequest="44"
+                    Padding="8,0"
+                    Margin="0,0,0,24"/>
+
+                <Button
+                    Text="Entrar"
+                    Clicked="OnLoginButtonClicked"
+                    BackgroundColor="#FFD000"
+                    TextColor="#080B0D"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    CornerRadius="26"
+                    HeightRequest="66"
+                    HorizontalOptions="Fill"
+                    Margin="0,0,0,28"/> 
+
+                <!-- Acesso ao cadastro -->
+                <HorizontalStackLayout
+                    HorizontalOptions="Center"
+                    Spacing="5">
+
+                    <Label
+                        Text="Não tem uma conta?"
+                        TextColor="#E1E4E6"
+                        FontSize="14"
+                        VerticalTextAlignment="Center"/>
+
+                    <Label
+                        Text="Criar conta"
+                        TextColor="#FFD000"
+                        FontSize="14"
+                        FontAttributes="Bold"
+                        VerticalTextAlignment="Center">
+
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="OnSignUpTapped"/>
+                        </Label.GestureRecognizers>
+
+                    </Label>
+                </HorizontalStackLayout>
 
             </VerticalStackLayout>
-        </Border>
+        </ScrollView>
     </Grid>
 </ContentPage>

@@ -1,48 +1,192 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Route2.PagesApp.SignUp"
-             Title="SignUp">
-    <Grid Padding="24">
-        <Border
-            WidthRequest="300"
-            HeightRequest="500"
-            Padding="24"
-            BackgroundColor="#454545"
-            StrokeThickness="0"
-            StrokeShape="RoundRectangle 18"
-            HorizontalOptions="Center"
-            VerticalOptions="Center">
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Route2.PagesApp.SignUp"
+    Title="SignUp"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#050A0D">
+
+    <Grid BackgroundColor="#050A0D"
+          Padding="24">
+
+        <ScrollView VerticalOptions="Fill"
+                    HorizontalOptions="Fill">
 
             <VerticalStackLayout
-                Spacing="14"
-                HorizontalOptions="Center"
-                VerticalOptions="Center">
-                
+                Spacing="0"
+                Padding="0,16,0,24"
+                HorizontalOptions="Fill">
+
+                <Border
+                    WidthRequest="100"
+                    HeightRequest="100"
+                    Stroke="#FFD000"
+                    StrokeThickness="2"
+                    BackgroundColor="#101416"
+                    StrokeShape="RoundRectangle 50"
+                    HorizontalOptions="Center"
+                    Margin="0,0,0,16">
+
+                    <Grid>
+                        <Label
+                            Text="〰"
+                            TextColor="#FFD000"
+                            FontSize="58"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            Margin="0,-8,0,0"/>
+                    </Grid>
+                </Border>
+
                 <Label
                     Text="Cadastro"
-                    TextColor="White"
-                    FontSize="18"
+                    TextColor="#FFFFFF"
+                    FontSize="32"
                     FontAttributes="Bold"
-                    HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Center"
-                    WidthRequest="230"/>
+                    HorizontalTextAlignment="Center"/>
 
-                <Entry x:Name="NameEntry" Placeholder="Nome Completo" />
-                <Entry x:Name="EmailEntry" Placeholder="E-mail" Keyboard="Email" />
-                <Entry x:Name="PasswordEntry" Placeholder="Senha" IsPassword="True" />
+                <Label
+                    Text="Crie sua conta e comece a usar o app"
+                    TextColor="#D5D8DA"
+                    FontSize="15"
+                    HorizontalTextAlignment="Center"
+                    Margin="0,8,0,26"/>
+
+                <Border
+                    BackgroundColor="#252C31"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 24"
+                    HeightRequest="66"
+                    Padding="16,0"
+                    Margin="0,0,0,14">
+
+                    <Grid ColumnDefinitions="36,*"
+                          ColumnSpacing="12"
+                          VerticalOptions="Center">
+
+                        <Label
+                            Text="♙"
+                            TextColor="#FFD000"
+                            FontSize="25"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"/>
+
+                        <Entry
+                            x:Name="NameEntry"
+                            Grid.Column="1"
+                            Placeholder="Nome completo"
+                            PlaceholderColor="#B9C0C5"
+                            TextColor="#FFFFFF"
+                            FontSize="16"
+                            BackgroundColor="Transparent"
+                            VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <Border
+                    BackgroundColor="#252C31"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 24"
+                    HeightRequest="66"
+                    Padding="16,0"
+                    Margin="0,0,0,14">
+
+                    <Grid ColumnDefinitions="36,*"
+                          ColumnSpacing="12"
+                          VerticalOptions="Center">
+
+                        <Label
+                            Text="✉"
+                            TextColor="#FFD000"
+                            FontSize="25"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"/>
+
+                        <Entry
+                            x:Name="EmailEntry"
+                            Grid.Column="1"
+                            Placeholder="E-mail"
+                            PlaceholderColor="#B9C0C5"
+                            TextColor="#FFFFFF"
+                            FontSize="16"
+                            Keyboard="Email"
+                            BackgroundColor="Transparent"
+                            VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <Border
+                    BackgroundColor="#252C31"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 24"
+                    HeightRequest="66"
+                    Padding="16,0"
+                    Margin="0,0,0,26">
+
+                    <Grid ColumnDefinitions="36,*"
+                          ColumnSpacing="12"
+                          VerticalOptions="Center">
+
+                        <Label
+                            Text="♙"
+                            TextColor="#FFD000"
+                            FontSize="25"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"/>
+
+                        <Entry
+                            x:Name="PasswordEntry"
+                            Grid.Column="1"
+                            Placeholder="Senha"
+                            PlaceholderColor="#B9C0C5"
+                            TextColor="#FFFFFF"
+                            FontSize="16"
+                            IsPassword="True"
+                            BackgroundColor="Transparent"
+                            VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
 
                 <Button
-                    Text="Permitir"
-                    BackgroundColor="Black"
-                    TextColor="White"
-                    FontSize="18"
+                    Text="Criar conta"
+                    Clicked="OnRegisterButtonClicked"
+                    BackgroundColor="#FFD000"
+                    TextColor="#080B0D"
+                    FontSize="20"
                     FontAttributes="Bold"
-                    CornerRadius="7"
-                    HeightRequest="55"
-                    WidthRequest="190"
-                    Clicked="OnRegisterButtonClicked"/>
+                    CornerRadius="26"
+                    HeightRequest="66"
+                    HorizontalOptions="Fill"
+                    Margin="0,0,0,26"/>
+
+                <HorizontalStackLayout
+                    HorizontalOptions="Center"
+                    Spacing="5">
+
+                    <Label
+                        Text="Já tem uma conta?"
+                        TextColor="#E1E4E6"
+                        FontSize="14"
+                        VerticalTextAlignment="Center"/>
+
+                    <Label
+                        Text="Entrar"
+                        TextColor="#FFD000"
+                        FontSize="14"
+                        FontAttributes="Bold"
+                        VerticalTextAlignment="Center">
+
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="OnSignInTapped"/>
+                        </Label.GestureRecognizers>
+
+                    </Label>
+                </HorizontalStackLayout>
+
             </VerticalStackLayout>
-        </Border>
+        </ScrollView>
     </Grid>
 </ContentPage>
