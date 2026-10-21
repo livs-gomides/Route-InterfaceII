@@ -31,7 +31,7 @@ public partial class SignIn : ContentPage
         if (isSuccess)
         {
 
-            Application.Current.MainPage = new NavigationPage(new StartPage());
+            Application.Current.MainPage = new NavigationPage(new AssistantPage());
         }
         else
         {

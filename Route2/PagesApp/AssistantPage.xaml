@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Route2.PagesApp.AssistantPage"
+    BackgroundColor="#050514"
+    Shell.NavBarIsVisible="False">
+
+    <!-- Estrutura principal -->
+    <Grid RowDefinitions="Auto,*,Auto"
+          Padding="20">
+
+        <!-- CABEÇALHO -->
+        <Grid
+            Grid.Row="0"
+            ColumnDefinitions="*,Auto"
+            Margin="0,15,0,0">
+
+            <Label
+                Grid.Column="0"
+                Text="Route"
+                TextColor="#FFC800"
+                FontSize="24"
+                FontAttributes="Bold"
+                VerticalOptions="Center" />
+
+            <Label
+                Grid.Column="1"
+                Text="⚙"
+                TextColor="#FFC800"
+                FontSize="30"
+                VerticalOptions="Center" />
+
+        </Grid>
+
+        <!-- ÁREA CENTRAL -->
+        <VerticalStackLayout
+            Grid.Row="1"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Spacing="30">
+
+            <!-- Botão do assistente -->
+            <Border
+                WidthRequest="240"
+                HeightRequest="240"
+                BackgroundColor="#FFC800"
+                StrokeThickness="0"
+                StrokeShape="RoundRectangle 120"
+                HorizontalOptions="Center">
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnAssistantTapped" />
+                </Border.GestureRecognizers>
+
+                <VerticalStackLayout
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Spacing="15">
+
+                    <Label
+                        Text="🎤"
+                        FontSize="65"
+                        HorizontalTextAlignment="Center" />
+
+                    <Label
+                        x:Name="AssistantStatus"
+                        Text="TOQUE PARA FALAR"
+                        TextColor="Black"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- Mensagem do assistente -->
+            <Label
+                Text="Seu assistente está pronto"
+                TextColor="White"
+                FontSize="18"
+                HorizontalTextAlignment="Center" />
+
+        </VerticalStackLayout>
+
+        <!-- BARRA DE NAVEGAÇÃO INFERIOR -->
+        <Grid
+    Grid.Row="2"
+    ColumnDefinitions="*,*"
+    HeightRequest="65"
+    ColumnSpacing="2"
+    BackgroundColor="#050514"
+    Margin="-20,0,-20,-20">
+
+            <!-- Início -->
+            <Border
+        Grid.Column="0"
+        BackgroundColor="#454545"
+        StrokeThickness="0">
+
+                <Label
+            Text="⌂"
+            TextColor="#FFC800"
+            FontSize="38"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
+
+            </Border>
+
+            <!-- Locais Salvos -->
+
+            <!-- Botão Locais Salvos -->
+            <Border
+    Grid.Column="1"
+    BackgroundColor="#454545"
+    StrokeThickness="0">
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer
+            Tapped="OnSavedPlacesTapped" />
+                </Border.GestureRecognizers>
+
+                <Label
+        Text="●"
+        TextColor="#FFC800"
+        FontSize="34"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+
+            </Border>
+
+        </Grid>
+
+    </Grid>
+
+</ContentPage>
