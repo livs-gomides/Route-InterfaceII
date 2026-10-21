@@ -4,17 +4,24 @@ namespace Route2.PagesApp;
 
 public partial class ForgetPassword : ContentPage
 {
-    private readonly Services.AuthService _authService = new();
-    public ForgetPassword(){
+    private readonly AuthService _authService = new();
+
+    public ForgetPassword()
+    {
         InitializeComponent();
     }
+
     private async void OnRecoverButtonClicked(object sender, EventArgs e)
     {
-        string email = EmailEntry.Text;
+        string email = EmailEntry.Text?.Trim() ?? string.Empty;
 
         if (string.IsNullOrWhiteSpace(email))
         {
-            await DisplayAlert("Atenção", "Preencha o e-mail para recuperar a senha.", "OK");
+            await DisplayAlert(
+                "Atenção",
+                "Preencha o e-mail para recuperar a senha.",
+                "OK");
+
             return;
         }
 
@@ -22,12 +29,24 @@ public partial class ForgetPassword : ContentPage
 
         if (newPassword != null)
         {
-            await DisplayAlert("Sucesso", $"A sua nova senha temporária é: {newPassword}", "OK");
+            await DisplayAlert(
+                "Sucesso",
+                $"A sua nova senha temporária é: {newPassword}",
+                "OK");
+
             await Shell.Current.GoToAsync("SignIn");
         }
         else
         {
-            await DisplayAlert("Erro", "E-mail não encontrado no sistema.", "OK");
+            await DisplayAlert(
+                "Erro",
+                "E-mail não encontrado no sistema.",
+                "OK");
         }
+    }
+
+    private async void OnBackToLoginTapped(object sender, TappedEventArgs e)
+    {
+        await Shell.Current.GoToAsync("SignIn");
     }
 }
