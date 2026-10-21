@@ -28,21 +28,9 @@
                     VerticalTextAlignment="Center"
                     WidthRequest="230"/>
 
-                <Label
-                    Text="Email"
-                    />
-                <Entry
-                    />
-                <Label
-                    Text="Senha"
-                    />
-                <Entry
-                    />
-                <Label
-                    Text="Confirmar senha"
-                    />
-                <Entry
-                    />
+                <Entry x:Name="NameEntry" Placeholder="Nome Completo" />
+                <Entry x:Name="EmailEntry" Placeholder="E-mail" Keyboard="Email" />
+                <Entry x:Name="PasswordEntry" Placeholder="Senha" IsPassword="True" />
 
                 <Button
                     Text="Permitir"
@@ -53,7 +41,7 @@
                     CornerRadius="7"
                     HeightRequest="55"
                     WidthRequest="190"
-                    Clicked="OnAllowClicked"/>
+                    Clicked="OnRegisterButtonClicked"/>
             </VerticalStackLayout>
         </Border>
     </Grid>

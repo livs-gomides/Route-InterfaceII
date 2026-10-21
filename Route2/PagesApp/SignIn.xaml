@@ -28,28 +28,13 @@
                     HorizontalTextAlignment="Center"
                     VerticalTextAlignment="Center"
                     WidthRequest="230"/>
-                
-                
-                <Label
-                    Text="Email"
-                    />
-                <Entry
-                    />
-                <Label
-                    Text="Senha"
-                    />
-                <Entry
-                    />
-                <Button
-                    Text="Realizar Login"
-                    BackgroundColor="#FFC800"
-                    TextColor="Black"
-                    FontSize="18"
-                    FontAttributes="Bold"
-                    CornerRadius="7"
-                    HeightRequest="55"
-                    WidthRequest="190"
-                    Clicked="OnAllowClicked"/>      
+
+
+                <Entry x:Name="EmailEntry" Placeholder="E-mail" Keyboard="Email" />
+                <Entry x:Name="PasswordEntry" Placeholder="Senha" IsPassword="True" />
+
+                <Button Text="Entrar" Clicked="OnLoginButtonClicked" />
+                  
 
                 <Button
                     Text="Esqueci a senha"
