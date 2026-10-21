@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Novo Perfil",
+    "Projects": [
+      {
+        "Path": "Route2\\Route2.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Route2\\RouteAPI-SQL-Connect\\RouteAPI-SQL-Connect.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

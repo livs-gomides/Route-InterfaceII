@@ -21,8 +21,7 @@ public partial class StartPage : ContentPage
 
         try
         {
-            await Shell.Current.GoToAsync(
-                nameof(PermissionLocationPage));
+            await Navigation.PushAsync(new PermissionLocationPage());
         }
         catch
         {
