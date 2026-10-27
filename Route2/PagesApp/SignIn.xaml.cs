@@ -64,4 +64,9 @@ public partial class SignIn : ContentPage
                 "OK");
         }
     }
+    private async void NotLoginButtonClicked(object sender, EventArgs e)
+    {
+
+        await Shell.Current.GoToAsync(nameof(AssistantPage));
+    }
 }

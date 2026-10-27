@@ -140,7 +140,18 @@
                     CornerRadius="26"
                     HeightRequest="66"
                     HorizontalOptions="Fill"
-                    Margin="0,0,0,28"/> 
+                    Margin="0,0,0,28"/>
+                <Button
+                    Text="Entrar sem Login"
+                    Clicked="NotLoginButtonClicked"
+                    BackgroundColor="#FFD000"
+                    TextColor="#080B0D"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    CornerRadius="26"
+                    HeightRequest="66"
+                    HorizontalOptions="Fill"
+                    Margin="0,0,0,28"/>     
 
                 <!-- Acesso ao cadastro -->
                 <HorizontalStackLayout
