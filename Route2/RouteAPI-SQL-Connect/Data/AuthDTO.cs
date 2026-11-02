@@ -1,13 +1,21 @@
-﻿namespace RouteAPI_SQL_Connect.Data;
+﻿using System.Text.Json.Serialization;
+
+namespace RouteAPI_SQL_Connect.Data;
 
 public class AuthDTO 
-{ 
+{
 }
+
 public class RegisterDto
 {
-    public string Name { get; set; } = string.Empty;
-    public string Email { get; set; } = string.Empty;
-    public string Password { get; set; } = string.Empty;
+    [JsonPropertyName("nome")]
+    public string Name { get; set; }
+
+    [JsonPropertyName("email")]
+    public string Email { get; set; }
+
+    [JsonPropertyName("senha")]
+    public string Password { get; set; }
 }
 
 public class LoginDto
