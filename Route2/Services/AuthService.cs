@@ -1,4 +1,4 @@
-﻿using System.Text;
+﻿using System.Net.Http.Json;
 using System.Text.Json;
 
 namespace Route2.Services;
@@ -6,53 +6,77 @@ namespace Route2.Services;
 public class AuthService
 {
     private readonly HttpClient _httpClient;
-    private readonly string _baseUrl = DeviceInfo.Platform == DevicePlatform.Android
-        ? "https://10.0.2.2:7191/api/Auth"
-        : "https://localhost:7191/api/Auth";
+    private readonly string _baseUrl = "http://routeips.runasp.net";
 
-    public AuthService()
+    public AuthService(HttpClient httpClient)
     {
-        var handler = new HttpClientHandler
+        _httpClient = httpClient;
+    }
+
+    public async Task<(bool IsSuccess, string Message)> RegisterAsync(string name, string email, string password)
+    {
+        try
         {
-            ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
-        };
-        _httpClient = new HttpClient(handler);
+            var data = new { nome = name, email = email, senha = password };
+            var response = await _httpClient.PostAsJsonAsync($"{_baseUrl}/api/auth/register", data);
+            var content = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                return (true, "Usuário cadastrado com sucesso.");
+            }
+
+            string errorMessage = string.IsNullOrWhiteSpace(content) ? "Erro ao realizar o cadastro." : content.Trim('"');
+            return (false, errorMessage);
+        }
+        catch (Exception ex)
+        {
+            return (false, $"Erro de ligação: {ex.Message}");
+        }
     }
 
-    public async Task<bool> RegisterAsync(string name, string email, string password)
+    public async Task<(bool IsSuccess, string Message)> LoginAsync(string email, string password)
     {
-        var data = new { Name = name, Email = email, Password = password };
-        var json = JsonSerializer.Serialize(data);
-        var content = new StringContent(json, Encoding.UTF8, "application/json");
+        try
+        {
+            var data = new { email = email, password = password };
+            var response = await _httpClient.PostAsJsonAsync($"{_baseUrl}/api/auth/login", data);
+            var content = await response.Content.ReadAsStringAsync();
 
-        var response = await _httpClient.PostAsync($"{_baseUrl}/register", content);
-        return response.IsSuccessStatusCode;
-    }
-    public async Task<bool> LoginAsync(string email, string password)
-    {
-        var data = new { Email = email, Password = password };
-        var json = JsonSerializer.Serialize(data);
-        var content = new StringContent(json, Encoding.UTF8, "application/json");
+            if (response.IsSuccessStatusCode)
+            {
+                return (true, "Login realizado com sucesso.");
+            }
 
-        var response = await _httpClient.PostAsync($"{_baseUrl}/login", content);
-        return response.IsSuccessStatusCode;
+            string errorMessage = string.IsNullOrWhiteSpace(content) ? "Credenciais inválidas." : content.Trim('"');
+            return (false, errorMessage);
+        }
+        catch (Exception ex)
+        {
+            return (false, $"Erro de ligação: {ex.Message}");
+        }
     }
 
     public async Task<string> ForgotPasswordAsync(string email)
     {
-        var data = new { Email = email };
-        var json = JsonSerializer.Serialize(data);
-        var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-        var response = await _httpClient.PostAsync($"{_baseUrl}/forgot-password", content);
-
-        if (response.IsSuccessStatusCode)
+        try
         {
-            var responseString = await response.Content.ReadAsStringAsync();
-            using var document = JsonDocument.Parse(responseString);
-            return document.RootElement.GetProperty("newPassword").GetString();
-        }
+            var data = new { email = email };
+            var response = await _httpClient.PostAsJsonAsync($"{_baseUrl}/api/auth/forgot-password", data);
 
-        return null;
+            if (response.IsSuccessStatusCode)
+            {
+                var responseString = await response.Content.ReadAsStringAsync();
+                using var document = JsonDocument.Parse(responseString);
+
+                return document.RootElement.GetProperty("newPassword").GetString();
+            }
+
+            return null;
+        }
+        catch
+        {
+            return null;
+        }
     }
 }
