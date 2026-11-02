@@ -5,11 +5,12 @@ namespace Route2.PagesApp;
 
 public partial class SignIn : ContentPage
 {
-    private readonly AuthService _authService = new();
+    private readonly AuthService _authService;
 
-    public SignIn()
+    public SignIn(AuthService authService)
     {
         InitializeComponent();
+        _authService = authService;
     }
 
     private async void ForgetPass(object sender, EventArgs e)
@@ -27,36 +28,28 @@ public partial class SignIn : ContentPage
         string email = EmailEntry.Text?.Trim() ?? string.Empty;
         string password = PasswordEntry.Text ?? string.Empty;
 
-        if (string.IsNullOrWhiteSpace(email) ||
-            string.IsNullOrWhiteSpace(password))
+        if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
         {
-            await DisplayAlert(
-                "Atenção",
-                "Preencha o e-mail e a senha para entrar.",
-                "OK");
+            await DisplayAlert("Atenção", "Preencha o e-mail e a senha para entrar.", "OK");
             return;
         }
 
         try
         {
-            bool isSuccess = await _authService.LoginAsync(email, password);
+            var result = await _authService.LoginAsync(email, password);
 
-            if (isSuccess)
+            if (result.IsSuccess)
             {
                 await Shell.Current.GoToAsync(nameof(AssistantPage));
             }
             else
             {
-                await DisplayAlert(
-                    "Acesso negado",
-                    "E-mail ou senha incorretos.",
-                    "OK");
+                await DisplayAlert("Acesso negado", result.Message, "OK");
             }
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine(
-                $"Erro no login: {ex}");
+            System.Diagnostics.Debug.WriteLine($"Erro no login: {ex}");
 
             await DisplayAlert(
                 "Erro no login",
