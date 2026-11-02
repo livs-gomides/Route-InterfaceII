@@ -4,11 +4,12 @@ namespace Route2.PagesApp;
 
 public partial class ForgetPassword : ContentPage
 {
-    private readonly AuthService _authService = new();
+     private readonly AuthService _authService;
 
-    public ForgetPassword()
+    public ForgetPassword(AuthService authService)
     {
         InitializeComponent();
+        _authService = authService;
     }
 
     private async void OnRecoverButtonClicked(object sender, EventArgs e)
