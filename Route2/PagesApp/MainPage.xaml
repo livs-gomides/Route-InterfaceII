@@ -11,7 +11,7 @@
 
         <Image
             Grid.Row="1"
-            Source="routesymbol.png"
+            Source="r_logo.png"
             WidthRequest="220"
             HeightRequest="190"
             Aspect="AspectFit"
