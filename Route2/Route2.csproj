@@ -56,7 +56,6 @@
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 		
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -72,6 +71,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="PagesApp\PlaceDetailsPage.xaml.cs">
+	    <DependentUpon>PlaceDetailsPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="PagesApp\SignIn.xaml.cs">
 	    <DependentUpon>SignIn.xaml</DependentUpon>
 	  </Compile>
@@ -94,6 +96,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PagesApp\ForgetPassword.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PagesApp\PlaceDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PagesApp\SavedPlacesPage.xaml">
