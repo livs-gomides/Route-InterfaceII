@@ -4,17 +4,21 @@ using RouteAPI_SQL_Connect.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
-var connectionString = builder.Configuration.GetConnectionString("RouteCloudDatabase");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<RouteDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 var app = builder.Build();
 
-// app.UseHttpsRedirection();
-app.UseAuthorization();
-app.MapControllers();
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<RouteDbContext>();
+    dbContext.Database.Migrate();
+}
 
 app.UseExceptionHandler(errorApp =>
 {
@@ -32,5 +36,11 @@ app.UseExceptionHandler(errorApp =>
         }
     });
 });
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.UseAuthorization();
+app.MapControllers();
 
 app.Run();
