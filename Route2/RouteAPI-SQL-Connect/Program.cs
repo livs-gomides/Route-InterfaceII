@@ -8,16 +8,24 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 35));
 
 builder.Services.AddDbContext<RouteDbContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+    options.UseMySql(connectionString, serverVersion));
 
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<RouteDbContext>();
-    dbContext.Database.Migrate();
+    try
+    {
+        var dbContext = scope.ServiceProvider.GetRequiredService<RouteDbContext>();
+        dbContext.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
 }
 
 app.UseExceptionHandler(errorApp =>
