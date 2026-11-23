@@ -1,27 +1,57 @@
 using Microsoft.Maui.Controls;
+using Route2.Models;
+using Route2.Services;
 using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace Route2.PagesApp;
 
+[QueryProperty(nameof(LocalId), "localId")]
 public partial class PlaceDetailsPage : ContentPage
 {
+    private readonly MapaService _mapaService;
     public ObservableCollection<Destination> Destinations { get; set; }
+    public string LocalId { get; set; } = string.Empty;
 
     public PlaceDetailsPage()
     {
         InitializeComponent();
-
-        Destinations = new ObservableCollection<Destination>
-        {
-            new Destination { Name = "Biblioteca", LocationInfo = "Térreo" },
-            new Destination { Name = "Banheiro", LocationInfo = "3º andar" },
-            new Destination { Name = "Sala", LocationInfo = "4º andar" },
-            new Destination { Name = "Burger King", LocationInfo = "Praça de Alimentação" },
-            new Destination { Name = "McDonald's", LocationInfo = "Praça de Alimentação" }
-        };
-
+        _mapaService = new MapaService();
+        Destinations = new ObservableCollection<Destination>();
         BindingContext = this;
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await LoadSubLocalsAsync();
+    }
+
+    private async Task LoadSubLocalsAsync()
+    {
+        try
+        {
+            if (!Guid.TryParse(LocalId, out var parsedLocalId))
+                return;
+
+            var subLocaisApi = await _mapaService.GetSubLocalsByLocalIdAsync(parsedLocalId);
+            Destinations.Clear();
+            foreach (var subLocal in subLocaisApi)
+            {
+                Destinations.Add(new Destination
+                {
+                    Name = subLocal.Name,
+                    LocationInfo = subLocal.FloorLevel == 0
+                        ? "Térreo"
+                        : $"{subLocal.FloorLevel}º andar"
+                });
+            }
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Erro", $"Não foi possível carregar os destinos: {ex.Message}", "OK");
+        }
     }
 
     private async void OnBackTapped(object sender, TappedEventArgs e)
