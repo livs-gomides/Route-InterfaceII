@@ -20,6 +20,6 @@ namespace RouteAPI_SQL_Connect.Data
         public int FloorLevel { get; set; }
 
         [ForeignKey("LocalID")]
-        public virtual Local Local { get; set; }
+        public virtual Local? Local { get; set; }
     }
 }
