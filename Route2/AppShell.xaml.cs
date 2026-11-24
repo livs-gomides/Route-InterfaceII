@@ -1,6 +1,4 @@
-﻿
-using Route2.PagesApp;
-
+﻿using Route2.PagesApp;
 namespace Route2;
 
 public partial class AppShell : Shell
@@ -44,5 +42,9 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(
             nameof(SavedPlacesPage),
             typeof(SavedPlacesPage));
+
+        Routing.RegisterRoute(
+            nameof(PlaceDetailsPage),
+            typeof(PlaceDetailsPage));
     }
 }

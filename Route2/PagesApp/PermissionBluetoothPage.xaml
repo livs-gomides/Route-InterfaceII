@@ -24,7 +24,7 @@
                 VerticalOptions="Center">
 
                 <Image
-                    Source="bluetoothicon.png"
+                    Source="bluetooth_icon.png"
                     HeightRequest="48"
                     WidthRequest="48"
                     HorizontalOptions="Center"

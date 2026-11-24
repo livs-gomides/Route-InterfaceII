@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using Route2.Services;
+using Route2.PagesApp; 
 
 namespace Route2
 {
@@ -16,8 +18,15 @@ namespace Route2
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
+
+            builder.Services.AddSingleton(new HttpClient());
+
+            builder.Services.AddTransient<AuthService>();
+
+            builder.Services.AddTransient<SignIn>();
+            builder.Services.AddTransient<SignUp>();
 
             return builder.Build();
         }

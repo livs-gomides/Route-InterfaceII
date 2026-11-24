@@ -1,24 +1,22 @@
-
 using Route2.Services;
 
 namespace Route2.PagesApp;
 
 public partial class SignUp : ContentPage
 {
-    private readonly AuthService _authService = new();
+    private readonly AuthService _authService;
 
-    public SignUp()
+    public SignUp(AuthService authService)
     {
         InitializeComponent();
+        _authService = authService;
     }
 
-    // Volta para tela de login
     private async void OnSignInTapped(object sender, TappedEventArgs e)
     {
         await Shell.Current.GoToAsync(nameof(SignIn));
     }
 
-    // cadastro
     private async void OnRegisterButtonClicked(object sender, EventArgs e)
     {
         string name = NameEntry.Text?.Trim() ?? string.Empty;
@@ -38,16 +36,16 @@ public partial class SignUp : ContentPage
 
         try
         {
-            bool isSuccess = await _authService.RegisterAsync(
+            var result = await _authService.RegisterAsync(
                 name,
                 email,
                 password);
 
-            if (isSuccess)
+            if (result.IsSuccess)
             {
                 await DisplayAlert(
                     "Sucesso",
-                    "Usuário cadastrado com sucesso! Faça login para continuar.",
+                    result.Message,
                     "OK");
 
                 await Shell.Current.GoToAsync(nameof(SignIn));
@@ -56,7 +54,7 @@ public partial class SignUp : ContentPage
             {
                 await DisplayAlert(
                     "Erro",
-                    "Não foi possível realizar o cadastro. Verifique se o e-mail já está em uso.",
+                    result.Message,
                     "OK");
             }
         }

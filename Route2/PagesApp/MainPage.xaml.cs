@@ -21,7 +21,7 @@ public partial class MainPage : ContentPage
 
         await Task.Delay(2000);
 
-        await this.FadeTo(0, 450);
+        await this.FadeTo(0, 1500);
 
         await Shell.Current.GoToAsync(
             nameof(StartPage),

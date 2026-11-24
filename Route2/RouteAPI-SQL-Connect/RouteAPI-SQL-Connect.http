@@ -1,6 +1,10 @@
-@RouteAPI_SQL_Connect_HostAddress = http://localhost:5132
+@RouteAPI_SQL_Connect_HostAddress = http://routeips.runasp.net
 
-GET {{RouteAPI_SQL_Connect_HostAddress}}/weatherforecast/
-Accept: application/json
+POST http://routeips.runasp.net/api/auth/register
+Content-Type: application/json
 
-###
+{
+  "nome": "Teste Final",
+  "email": "testefinal@email.com",
+  "senha": "123"
+} 

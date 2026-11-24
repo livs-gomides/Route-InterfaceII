@@ -25,7 +25,7 @@
 
                 <!-- Ícone de localização -->
                 <Image
-                    Source="locationicon.png"
+                    Source="location_icon.png"
                     HeightRequest="42"
                     WidthRequest="42"
                     HorizontalOptions="Center"

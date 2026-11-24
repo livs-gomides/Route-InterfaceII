@@ -4,28 +4,50 @@ using RouteAPI_SQL_Connect.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
-var connectionString = builder.Configuration.GetConnectionString("RouteCloudDatabase");
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var serverVersion = new MySqlServerVersion(new Version(8, 0, 35));
 
 builder.Services.AddDbContext<RouteDbContext>(options =>
-    options.UseMySql(
-        connectionString,
-        new MySqlServerVersion(new Version(8, 4, 0)),
-        mySqlOptions => mySqlOptions.EnableRetryOnFailure(
-            maxRetryCount: 5,
-            maxRetryDelay: TimeSpan.FromSeconds(10),
-            errorNumbersToAdd: null)
-    ));
+    options.UseMySql(connectionString, serverVersion));
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+using (var scope = app.Services.CreateScope())
 {
-    app.MapOpenApi();
+    try
+    {
+        var dbContext = scope.ServiceProvider.GetRequiredService<RouteDbContext>();
+        dbContext.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
 }
 
-app.UseHttpsRedirection();
+app.UseExceptionHandler(errorApp =>
+{
+    errorApp.Run(async context =>
+    {
+        context.Response.StatusCode = 500;
+        context.Response.ContentType = "application/json";
+
+        var exceptionHandlerPathFeature = context.Features.Get<Microsoft.AspNetCore.Diagnostics.IExceptionHandlerPathFeature>();
+        if (exceptionHandlerPathFeature?.Error != null)
+        {
+            var error = exceptionHandlerPathFeature.Error;
+            var message = error.InnerException?.Message ?? error.Message;
+            await context.Response.WriteAsJsonAsync(new { detalheDoErro = message });
+        }
+    });
+});
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
 app.UseAuthorization();
 app.MapControllers();
 
