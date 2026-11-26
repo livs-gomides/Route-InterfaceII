@@ -8,11 +8,27 @@ using System.Threading.Tasks;
 namespace Route2.PagesApp;
 
 [QueryProperty(nameof(LocalId), "localId")]
+[QueryProperty(nameof(LocalName), "localName")]
 public partial class PlaceDetailsPage : ContentPage
 {
     private readonly MapaService _mapaService;
     public ObservableCollection<Destination> Destinations { get; set; }
     public string LocalId { get; set; } = string.Empty;
+
+    private string _localName = "Destinos Internos";
+    public string LocalName
+    {
+        get => _localName;
+        set
+        {
+            _localName = string.IsNullOrWhiteSpace(value)
+                ? "Destinos Internos"
+                : Uri.UnescapeDataString(value);
+
+            if (PlaceTitleLabel != null)
+                PlaceTitleLabel.Text = _localName;
+        }
+    }
 
     public PlaceDetailsPage()
     {
@@ -73,6 +89,6 @@ public partial class PlaceDetailsPage : ContentPage
 
 public class Destination
 {
-    public string Name { get; set; }
-    public string LocationInfo { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string LocationInfo { get; set; } = string.Empty;
 }

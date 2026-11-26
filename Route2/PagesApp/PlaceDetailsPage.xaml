@@ -29,6 +29,7 @@
 
             <!-- Título -->
             <Label
+                x:Name="PlaceTitleLabel"
                 Grid.Column="1"
                 Text="Destinos Internos"
                 TextColor="#FFC800"

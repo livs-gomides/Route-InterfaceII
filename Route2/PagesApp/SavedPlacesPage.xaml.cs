@@ -52,7 +52,8 @@ public partial class SavedPlacesPage : ContentPage
     {
         if (sender is Button button && button.BindingContext is LocalItem selectedLocal)
         {
-            await Shell.Current.GoToAsync($"{nameof(PlaceDetailsPage)}?localId={selectedLocal.LocalID}");
+            var encodedName = Uri.EscapeDataString(selectedLocal.Name ?? "Destinos Internos");
+            await Shell.Current.GoToAsync($"{nameof(PlaceDetailsPage)}?localId={selectedLocal.LocalID}&localName={encodedName}");
         }
     }
 }
