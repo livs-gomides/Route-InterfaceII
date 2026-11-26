@@ -13,20 +13,20 @@ public partial class PermissionBluetoothPage : ContentPage
     {
         //try
         //{
-            //var status = await Permissions.CheckStatusAsync<
-            //    Permissions.Bluetooth>();
+        //var status = await Permissions.CheckStatusAsync<
+        //    Permissions.Bluetooth>();
 
-            //if (status != PermissionStatus.Granted)
-            //{
-            //    status = await Permissions.RequestAsync<
-            //        Permissions.Bluetooth>();
-            //}
+        //if (status != PermissionStatus.Granted)
+        //{
+        //    status = await Permissions.RequestAsync<
+        //        Permissions.Bluetooth>();
+        //}
 
-            //if (status == PermissionStatus.Granted)
-            //{
-                // Avança diretamente para a tela de permissão Bluetooth.
-                await Shell.Current.GoToAsync(
-                    nameof(SignUp));
+        //if (status == PermissionStatus.Granted)
+        //{
+        // Avança diretamente para o Assistente Virtual.
+        await Shell.Current.GoToAsync(
+            nameof(AssistantPage));
         //    }
         //    else
         //    {
@@ -58,5 +58,4 @@ public partial class PermissionBluetoothPage : ContentPage
         //        "OK");
         //}
     }
-
 }

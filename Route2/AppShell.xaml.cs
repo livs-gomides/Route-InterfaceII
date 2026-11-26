@@ -46,5 +46,9 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(
             nameof(PlaceDetailsPage),
             typeof(PlaceDetailsPage));
+
+        Routing.RegisterRoute(
+            nameof(SettingsPage),
+            typeof(SettingsPage));
     }
 }

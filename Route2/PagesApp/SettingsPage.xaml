@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Route2.PagesApp.SettingsPage"
+    BackgroundColor="#050514"
+    Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*" Padding="20">
+
+        <!-- CABEÇALHO -->
+        <Grid
+            Grid.Row="0"
+            ColumnDefinitions="Auto,*"
+            Margin="0,15,0,30">
+
+            <Label
+                Grid.Column="0"
+                Text="❮"
+                TextColor="#FFC800"
+                FontSize="30"
+                VerticalOptions="Center"
+                SemanticProperties.Description="Voltar">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackTapped" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Label
+                Grid.Column="1"
+                Text="Configurações"
+                TextColor="#FFC800"
+                FontSize="24"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"
+                VerticalOptions="Center" />
+        </Grid>
+
+        <!-- OPÇÕES -->
+        <VerticalStackLayout Grid.Row="1" Spacing="15">
+
+            <Label
+                Text="Conta"
+                TextColor="#FFC800"
+                FontSize="16"
+                FontAttributes="Bold"
+                Margin="0,0,0,5" />
+
+            <Button
+                Text="Entrar na conta"
+                BackgroundColor="#FFC800"
+                TextColor="#000000"
+                FontAttributes="Bold"
+                HeightRequest="55"
+                CornerRadius="8"
+                SemanticProperties.Description="Ir para a tela de login"
+                Clicked="OnSignInClicked" />
+
+            <Button
+                Text="Criar conta"
+                BackgroundColor="#454545"
+                TextColor="#FFFFFF"
+                FontAttributes="Bold"
+                HeightRequest="55"
+                CornerRadius="8"
+                SemanticProperties.Description="Ir para a tela de cadastro"
+                Clicked="OnSignUpClicked" />
+
+            <BoxView HeightRequest="1" Color="#454545" Margin="0,15" />
+
+            <Label
+                Text="Preferências"
+                TextColor="#FFC800"
+                FontSize="16"
+                FontAttributes="Bold"
+                Margin="0,0,0,5" />
+
+            <Button
+                Text="Acessibilidade"
+                BackgroundColor="#454545"
+                TextColor="#FFFFFF"
+                HeightRequest="55"
+                CornerRadius="8"
+                Clicked="OnAccessibilityClicked" />
+
+            <Button
+                Text="Termos e Privacidade"
+                BackgroundColor="#454545"
+                TextColor="#FFFFFF"
+                HeightRequest="55"
+                CornerRadius="8"
+                Clicked="OnPrivacyClicked" />
+
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

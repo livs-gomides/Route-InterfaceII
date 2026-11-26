@@ -7,29 +7,100 @@
     Shell.NavBarIsVisible="False">
 
     <Grid RowDefinitions="Auto, *, Auto">
-        <!-- CABEÇALHO -->
-        <Grid Grid.Row="0" ColumnDefinitions="Auto, *, Auto" Padding="20">
-            <Image Grid.Column="0" Source="route_small_logo.png" HeightRequest="30" HorizontalOptions="Start" />
-            <ImageButton Grid.Column="2" Source="settings_icon.png" HeightRequest="30" WidthRequest="30" BackgroundColor="Transparent" HorizontalOptions="End" />
+        <!-- CABEÇALHO (ZIndex alto para nunca ser bloqueado pela área central) -->
+        <Grid
+            Grid.Row="0"
+            ZIndex="10"
+            ColumnDefinitions="Auto, *, Auto"
+            Padding="20">
+
+            <Image
+                Grid.Column="0"
+                Source="route_small_logo.png"
+                HeightRequest="30"
+                Aspect="AspectFit"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                SemanticProperties.Description="Logo Route" />
+
+            <Border
+                Grid.Column="2"
+                WidthRequest="48"
+                HeightRequest="48"
+                BackgroundColor="Transparent"
+                StrokeThickness="0"
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                SemanticProperties.Description="Configurações">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSettingsTapped" />
+                </Border.GestureRecognizers>
+                <Image
+                    Source="settings_icon.png"
+                    HeightRequest="30"
+                    WidthRequest="30"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Border>
         </Grid>
 
         <!-- ÁREA CENTRAL DO ASSISTENTE -->
-        <VerticalStackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" Spacing="40">
+        <VerticalStackLayout
+            Grid.Row="1"
+            ZIndex="1"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Spacing="30">
+
             <!-- Texto de Status Acima -->
-            <Label x:Name="AssistantTitle" Text="Pronto" TextColor="White" FontSize="26" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+            <Label
+                x:Name="AssistantTitle"
+                Text="Pronto"
+                TextColor="White"
+                FontSize="26"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center" />
 
             <!-- Botão/Imagem Central do Assistente -->
-            <ImageButton x:Name="AssistantButton" Source="assistant_button_ready.png" WidthRequest="250" HeightRequest="250" BackgroundColor="Transparent" Clicked="OnAssistantTapped" />
+            <ImageButton
+                x:Name="AssistantButton"
+                Source="assistant_button.png"
+                WidthRequest="250"
+                HeightRequest="250"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                SemanticProperties.Description="Botão do assistente de voz"
+                Clicked="OnAssistantTapped" />
 
             <!-- Texto de Ação Abaixo -->
-            <Label x:Name="AssistantActionText" Text="Toque para Falar" TextColor="White" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+            <Label
+                x:Name="AssistantActionText"
+                Text="Toque para Falar"
+                TextColor="White"
+                FontSize="20"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center" />
         </VerticalStackLayout>
 
         <!-- BARRA DE NAVEGAÇÃO INFERIOR -->
-        <Grid Grid.Row="2" ColumnDefinitions="*,*" HeightRequest="70" ColumnSpacing="2" BackgroundColor="#050514">
+        <Grid
+            Grid.Row="2"
+            ZIndex="10"
+            ColumnDefinitions="*,*"
+            HeightRequest="70"
+            ColumnSpacing="2"
+            BackgroundColor="#050514">
+
             <!-- Botão Home -->
             <Border Grid.Column="0" BackgroundColor="#454545" StrokeThickness="0">
-                <Image Source="home_icon.png" HeightRequest="35" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Image
+                    Source="home_icon.png"
+                    HeightRequest="35"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    SemanticProperties.Description="Início" />
             </Border>
 
             <!-- Botão Locais Salvos -->
@@ -37,7 +108,13 @@
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnSavedPlacesTapped" />
                 </Border.GestureRecognizers>
-                <Image Source="location_icon.png" HeightRequest="35" HorizontalOptions="Center" VerticalOptions="Center" />
+                <Image
+                    Source="location_icon.png"
+                    HeightRequest="35"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    SemanticProperties.Description="Locais Salvos" />
             </Border>
         </Grid>
     </Grid>

@@ -35,13 +35,13 @@ public partial class AssistantPage : ContentPage
 
             case 2: // Processando (Calculando Rota)
                 AssistantTitle.Text = "Processando";
-                AssistantButton.Source = "assistant_button_make_route.png"; // Usando a imagem sugerida no pack
+                AssistantButton.Source = "assistant_button_make_route.png";
                 AssistantActionText.Text = "Calculando Rota";
                 break;
 
             case 3: // Iniciando Navegação
                 AssistantTitle.Text = "Iniciando Navegação";
-                AssistantButton.Source = "assistant_button_ready.png"; // O ícone com "check" pode ser este ou outro específico
+                AssistantButton.Source = "assistant_button_ready.png";
                 AssistantActionText.Text = "";
                 break;
         }
@@ -51,5 +51,12 @@ public partial class AssistantPage : ContentPage
     private async void OnSavedPlacesTapped(object sender, TappedEventArgs e)
     {
         await Shell.Current.GoToAsync(nameof(SavedPlacesPage));
+    }
+
+    // Navegar para Configurações
+    // Navegar para Configurações
+    private async void OnSettingsTapped(object sender, TappedEventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(SettingsPage));
     }
 }
